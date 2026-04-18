@@ -1,0 +1,1 @@
+/home/mirko/.local/share/dotfiles/current/theme/neovim.lua

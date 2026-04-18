@@ -1,0 +1,126 @@
+// ==========================================
+// MY NIRI CONFIGURATION (PORTED FROM HYPRLAND)
+// ==========================================
+
+// Autostart Services
+spawn-at-startup "waybar"
+spawn-at-startup "dunst"
+spawn-at-startup "udiskie" "-t"
+spawn-at-startup "nm-applet"
+spawn-at-startup "polkit-gnome-authentication-agent-1"
+spawn-at-startup "swayosd-server"
+
+input {
+    keyboard {
+        xkb {
+            layout "de"
+        }
+        repeat-delay 300
+        repeat-rate 50
+    }
+    touchpad {
+        tap true
+        natural-scroll true
+        click-method "clickfinger"
+    }
+    mouse {
+        accel-profile "flat"
+    }
+}
+
+layout {
+    gaps 8
+    center-focused-column "never"
+    default-column-width { proportion 0.5; }
+    
+    focus-ring {
+        width 3
+        active-color "#89b4fa"
+        inactive-color "#585b70"
+    }
+}
+
+// Window rules
+window-rule {
+    match app-id="fuzzel"
+    open-floating true
+}
+
+window-rule {
+    match app-id="wezterm"
+    // Apply transparency if needed
+}
+
+// Keybindings - Adapted exactly from your old Hyprland config
+binds {
+    // --- Applications ---
+    Mod+Q { spawn "wezterm"; }
+    Mod+B { spawn "firefox"; }
+    Mod+E { spawn "nautilus" "--new-window"; }
+    Mod+D { spawn "fuzzel"; }
+    
+    Mod+Ctrl+O { spawn "wezterm" "-e" "ollama-chat"; }
+    Mod+Ctrl+N { spawn "sunsetr-toggle"; }
+
+    // --- Window Management ---
+    Mod+C { close-window; }
+    Mod+F { fullscreen-window; }
+    Mod+M { maximize-column; }
+    Mod+T { toggle-window-floating; }
+    Mod+J { consume-or-expel-window-left; }
+
+    // --- Focus Movement ---
+    Mod+Left  { focus-column-left; }
+    Mod+Right { focus-column-right; }
+    Mod+Up    { focus-window-up; }
+    Mod+Down  { focus-window-down; }
+
+    // --- Window Moving (Swap) ---
+    Mod+Alt+Left  { move-column-left; }
+    Mod+Alt+Right { move-column-right; }
+    Mod+Alt+Up    { move-window-up; }
+    Mod+Alt+Down  { move-window-down; }
+    
+    // --- Resizing ---
+    Mod+Shift+Left  { set-column-width "-10%"; }
+    Mod+Shift+Right { set-column-width "+10%"; }
+    Mod+Shift+Up    { set-window-height "-10%"; }
+    Mod+Shift+Down  { set-window-height "+10%"; }
+
+    // --- Workspaces ---
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    // --- Screenshots ---
+    Print { spawn "sh" "-c" "grim -g \"$(slurp)\" -c"; }
+    Mod+Print { spawn "grim" "-c"; }
+
+    // --- Media & Volume (SwayOSD Integration) ---
+    XF86AudioPlay { spawn "playerctl" "play-pause"; }
+    XF86AudioNext { spawn "playerctl" "next"; }
+    XF86AudioPrev { spawn "playerctl" "previous"; }
+    
+    XF86AudioRaiseVolume { spawn "swayosd-client" "--output-volume" "raise"; }
+    XF86AudioLowerVolume { spawn "swayosd-client" "--output-volume" "lower"; }
+    XF86AudioMute        { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+    
+    XF86MonBrightnessUp   { spawn "swayosd-client" "--brightness" "raise"; }
+    XF86MonBrightnessDown { spawn "swayosd-client" "--brightness" "lower"; }
+}

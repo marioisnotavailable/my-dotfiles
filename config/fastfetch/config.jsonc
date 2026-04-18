@@ -1,0 +1,108 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "builtin",
+        "source": "arch",
+        "color": {
+            "1": "blue",
+            "2": "blue"
+        },
+        "padding": {
+            "top": 1,
+            "right": 4,
+            "left": 1
+        }
+    },
+    "display": {
+        "separator": "  "
+    },
+    "modules": [
+        {
+            "key": "╭─────────────╮",
+            "type": "custom"
+        },
+        {
+            "key": "│ {#34}  distro   {#keys}│",
+            "type": "os"
+        },
+        {
+            "key": "│ {#35}  kernel   {#keys}│",
+            "type": "kernel"
+        },
+        {
+            "key": "│ {#36}  wm       {#keys}│",
+            "type": "wm"
+        },
+        {
+            "key": "│ {#31}  term     {#keys}│",
+            "type": "terminal"
+        },
+        {
+            "key": "│ {#32}  shell    {#keys}│",
+            "type": "shell"
+        },
+        {
+            "key": "│ {#33}󰍛  cpu      {#keys}│",
+            "type": "cpu",
+            "showPeCoreCount": true
+        },
+        {
+            "key": "│ {#35}󰢮  gpu      {#keys}│",
+            "type": "gpu",
+            "hideType": "integrated",
+            "format": "{1} {2}"
+        },
+        {
+            "key": "│ {#34}󰉉  disk     {#keys}│",
+            "type": "disk",
+            "folders": "/"
+        },
+        {
+            "key": "│ {#36}  memory   {#keys}│",
+            "type": "memory"
+        },
+        {
+            "key": "│ {#33}󰅐  uptime   {#keys}│",
+            "type": "uptime"
+        },
+        {
+            "key": "│ {#34}󰏖  pkgs     {#keys}│",
+            "type": "packages"
+        },
+        {
+            "key": "│ {#35}󰍹  display  {#keys}│",
+            "type": "display",
+            "format": "{name}: {1}x{2}@{3}Hz"
+        },
+        {
+            "key": "│ {#36}󰉼  theme    {#keys}│",
+            "type": "theme"
+        },
+        {
+            "key": "│ {#31}󰀻  icons    {#keys}│",
+            "type": "icons"
+        },
+        {
+            "key": "│ {#32}  font     {#keys}│",
+            "type": "font"
+        },
+        {
+            "key": "│ {#33}󰩟  ip       {#keys}│",
+            "type": "localip",
+            "showIpv6": false
+        },
+        {
+            "key": "├─────────────┤",
+            "type": "custom"
+        },
+        {
+            "key": "│ {#39}  colors   {#keys}│",
+            "type": "colors",
+            "symbol": "circle"
+        },
+        {
+            "key": "╰─────────────╯",
+            "type": "custom"
+        }
+    ]
+}
