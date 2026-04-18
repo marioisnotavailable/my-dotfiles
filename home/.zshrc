@@ -2,6 +2,12 @@
 # ZSH CONFIGURATION
 # =============================================================================
 
+# --- Oh My Zsh ---
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="" # We use Starship instead
+plugins=(git fzf zoxide)
+source $ZSH/oh-my-zsh.sh
+
 # --- Environment ---
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="nvim"
@@ -63,6 +69,8 @@ if command -v starship &>/dev/null; then
     eval "$(starship init zsh)"
 fi
 
+# Zoxide and FZF are now handled by Oh My Zsh plugins above, 
+# but we keep this for standalone fallback
 if command -v zoxide &>/dev/null; then
     eval "$(zoxide init zsh)"
 fi
