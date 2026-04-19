@@ -25,7 +25,7 @@ This repository contains my automated dotfiles setup for Arch Linux, transitioni
 If you just want to bootstrap your system without manually cloning the repository first, you can run:
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/marioisnotavailable/my-dotfiles/main/install.sh)"
+curl -fsSL https://raw.githubusercontent.com/marioisnotavailable/my-dotfiles/main/install.sh | bash
 ```
 
 ### Option 2: Manual Clone
