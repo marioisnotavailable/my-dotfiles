@@ -20,8 +20,8 @@ input {
         repeat-rate 50
     }
     touchpad {
-        tap true
-        natural-scroll true
+        tap-to-click
+        natural-scroll
         click-method "clickfinger"
     }
     mouse {
@@ -57,19 +57,19 @@ window-rule {
 // Keybindings - Adapted exactly from your old Hyprland config
 binds {
     // --- Applications ---
-    Mod+T { spawn "alacritty"; }
+    Mod+Q { spawn "wezterm"; }
     Mod+B { spawn "firefox"; }
     Mod+E { spawn "nautilus" "--new-window"; }
     Mod+D { spawn "fuzzel"; }
     
-    Mod+Ctrl+O { spawn "alacritty" "-e" "ollama-chat"; }
+    Mod+Ctrl+O { spawn "wezterm" "-e" "ollama-chat"; }
     Mod+Ctrl+N { spawn "sunsetr-toggle"; }
 
     // --- Window Management ---
-    Mod+Q { close-window; }
+    Mod+C { close-window; }
     Mod+F { fullscreen-window; }
     Mod+M { maximize-column; }
-    Mod+Shift+T { toggle-window-floating; }
+    Mod+T { toggle-window-floating; }
     Mod+J { consume-or-expel-window-left; }
 
     // --- Focus Movement ---
