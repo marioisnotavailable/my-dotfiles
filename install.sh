@@ -6,7 +6,20 @@
 
 set -e
 
-DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Detect if the script is being run locally or via curl/wget
+if [ -d "$HOME/.local/share/my-dotfiles" ]; then
+    DOTFILES_DIR="$HOME/.local/share/my-dotfiles"
+elif [ -d "$HOME/my-dotfiles" ]; then
+    DOTFILES_DIR="$HOME/my-dotfiles"
+else
+    # If run via curl, we need to clone the repo first!
+    echo "--> Running via curl/wget. Cloning dotfiles repository first..."
+    DOTFILES_DIR="$HOME/.local/share/my-dotfiles"
+    if [ ! -d "$DOTFILES_DIR" ]; then
+        sudo pacman -Sy --noconfirm --needed git
+        git clone https://github.com/marioisnotavailable/my-dotfiles.git "$DOTFILES_DIR"
+    fi
+fi
 
 echo "========================================"
 echo " Starting Niri + Zsh Installation"
