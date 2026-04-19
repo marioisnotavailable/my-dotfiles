@@ -209,6 +209,12 @@ main() {
     sudo udevadm control --reload-rules || true
     sudo udevadm trigger || true
     
+    echo "--> Checking /etc/fstab for storage drives..."
+    if ! grep -q "/mnt/storage" /etc/fstab; then
+        echo "WARNING: Secondary storage drive '/mnt/storage' not found in fstab."
+        echo "Make sure to manually mount your extra drives (e.g. UUID=cb06f4e4...) if this is a fresh install!"
+    fi
+
     echo "--> Configuring Pacman Tweaks & Multilib..."
     sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
     sudo grep -q "^ILoveCandy" /etc/pacman.conf || sudo sed -i '/^Color/a ILoveCandy' /etc/pacman.conf
