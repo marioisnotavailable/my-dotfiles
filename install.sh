@@ -209,10 +209,20 @@ main() {
     sudo udevadm control --reload-rules || true
     sudo udevadm trigger || true
     
-    echo "--> Configuring Pacman Tweaks..."
+    echo "--> Configuring Pacman Tweaks & Multilib..."
     sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
     sudo grep -q "^ILoveCandy" /etc/pacman.conf || sudo sed -i '/^Color/a ILoveCandy' /etc/pacman.conf
     sudo sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+
+    # Enable multilib for Steam and 32-bit gaming
+    if grep -q "^#\[multilib\]" /etc/pacman.conf; then
+        echo "Enabling [multilib] repository for Steam..."
+        sudo sed -i '/^#\[multilib\]/{
+N
+s/^#\[multilib\]\n#Include/\[multilib\]\nInclude/
+}' /etc/pacman.conf
+        sudo pacman -Sy --noconfirm
+    fi
 
     echo "--> Enabling User and Systemd Services..."
     systemctl --user daemon-reload || true
