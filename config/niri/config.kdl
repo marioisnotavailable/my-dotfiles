@@ -20,7 +20,7 @@ input {
         repeat-rate 50
     }
     touchpad {
-        tap-to-click
+        tap
         natural-scroll
         click-method "clickfinger"
     }
