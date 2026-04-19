@@ -87,7 +87,7 @@ install_packages() {
         noto-fonts noto-fonts-emoji ttf-cascadia-mono-nerd ttf-jetbrains-mono-nerd bibata-cursor-theme gnome-themes-extra otf-font-awesome yaru-icon-theme
 
         # Gaming & Launchers
-        steam steam-devices heroic-games-launcher-bin modrinth-app-bin pandora-launcher-bin r2modman-bin balatro-mod-manager-bin
+        steamheroic-games-launcher-bin modrinth-app-bin pandora-launcher-bin r2modman-bin balatro-mod-manager-bin
 
         # Elephant Suite
         elephant elephant-calc elephant-clipboard elephant-desktopapplications elephant-files elephant-menus elephant-providerlist elephant-symbols elephant-todo
