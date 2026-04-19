@@ -89,7 +89,7 @@ install_packages() {
     yay -S --noconfirm --needed "${pkgs[@]}"
 
     echo "--> Installing Flatpaks..."
-    flatpak install -y flathub com.usebottles.bottles org.vinegarhq.Sober org.kde.kfind || true
+    flatpak install -y flathub com.usebottles.bottles org.vinegarhq.Sober || true
 }
 
 # 3. Configure Nvidia (If Present)
