@@ -27,6 +27,8 @@ input {
     mouse {
         accel-profile "flat"
     }
+
+    focus-follows-mouse max-scroll-amount="0%"
 }
 
 layout {
@@ -55,19 +57,19 @@ window-rule {
 // Keybindings - Adapted exactly from your old Hyprland config
 binds {
     // --- Applications ---
-    Mod+Q { spawn "wezterm"; }
+    Mod+T { spawn "alacritty"; }
     Mod+B { spawn "firefox"; }
     Mod+E { spawn "nautilus" "--new-window"; }
     Mod+D { spawn "fuzzel"; }
     
-    Mod+Ctrl+O { spawn "wezterm" "-e" "ollama-chat"; }
+    Mod+Ctrl+O { spawn "alacritty" "-e" "ollama-chat"; }
     Mod+Ctrl+N { spawn "sunsetr-toggle"; }
 
     // --- Window Management ---
-    Mod+C { close-window; }
+    Mod+Q { close-window; }
     Mod+F { fullscreen-window; }
     Mod+M { maximize-column; }
-    Mod+T { toggle-window-floating; }
+    Mod+Shift+T { toggle-window-floating; }
     Mod+J { consume-or-expel-window-left; }
 
     // --- Focus Movement ---
