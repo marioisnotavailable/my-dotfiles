@@ -34,13 +34,12 @@ If you want to inspect the files before running the script:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/marioisnotavailable/my-dotfiles.git ~/my-dotfiles
-   cd ~/my-dotfiles
+   git clone https://github.com/marioisnotavailable/my-dotfiles.git ~/my-dotfiles && cd ~/my-dotfiles
    ```
 
 2. **Run the installation script:**
    ```bash
-   bash install.sh
+   ./install.sh
    ```
 
 ## Post-Installation
