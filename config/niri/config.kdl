@@ -3,6 +3,7 @@
 // ==========================================
 
 // Autostart Services
+spawn-at-startup "sh" "-c" "swww-daemon & sleep 1 && swww img ~/.local/share/dotfiles/current/background"
 spawn-at-startup "waybar"
 spawn-at-startup "dunst"
 spawn-at-startup "udiskie" "-t"

@@ -4,15 +4,9 @@ HideFromProviderlist = true
 Cache = false
 
 function SetWallpaper(value)
-	os.execute("ln -nsf '" .. value .. "' ~/.local/share/dotfiles/current/background")
-
-	local monitors_handle = io.popen("hyprctl monitors -j | jq -r '.[].name'")
-	if monitors_handle then
-		for monitor in monitors_handle:lines() do
-			os.execute("hyprctl hyprpaper reload '" .. monitor .. "," .. value .. "'")
-		end
-		monitors_handle:close()
-	end
+	local home = os.getenv("HOME") or ""
+	local script_path = home .. "/.config/niri/set-wallpaper.sh"
+	os.execute(script_path .. " '" .. value .. "' &")
 end
 
 function GetEntries()

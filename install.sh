@@ -56,7 +56,7 @@ install_packages() {
         neovim lazygit visual-studio-code-insiders-bin clion datagrip clion-jre datagrip-jre
 
         # Window Manager, Wayland Base & Theming
-        niri fuzzel waybar mako dunst swayosd polkit-gnome gnome-keyring xdg-desktop-portal-gtk xdg-utils satty sunsetr tinte walker xar qt5ct qt6ct qt6-wayland matugen
+        niri fuzzel waybar mako dunst swayosd polkit-gnome gnome-keyring xdg-desktop-portal-gtk xdg-utils satty sunsetr tinte walker xar qt5ct qt6ct qt6-wayland matugen swww
 
         # Media & Screen (Screenshot, Images, Video)
         grim slurp wl-clipboard wl-paste imv mpv vlc yt-dlp ffmpeg imagemagick loupe gpu-screen-recorder handbrake-cli tesseract tesseract-data-eng
