@@ -109,7 +109,7 @@ install_packages() {
 setup_nvidia() {
     if lspci -k | grep -A 2 -E "(VGA|3D)" | grep -iq nvidia; then
         echo "--> Nvidia GPU detected! Installing drivers and configuring Wayland..."
-        yay -S --noconfirm --needed nvidia-dkms nvidia-utils nvidia-settings egl-wayland
+        yay -S --noconfirm --needed nvidia-open nvidia-utils nvidia-settings egl-wayland
 
         # Set Wayland environment variables for Nvidia
         mkdir -p "$HOME/.config/environment.d"
