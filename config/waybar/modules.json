@@ -1,10 +1,10 @@
 {
   "niri/workspaces": {
-    "on-scroll-up": "hyprctl dispatch workspace r-1",
-    "on-scroll-down": "hyprctl dispatch workspace r+1",
+    "on-scroll-up": "niri msg action focus-workspace-down",
+    "on-scroll-down": "niri msg action focus-workspace-up",
     "on-click": "activate",
     "active-only": false,
-    "all-outputs": true,
+    "all-outputs": false,
     "format": "{}",
     "format-icons": {
       "urgent": "",
@@ -12,7 +12,7 @@
       "default": ""
     },
     "persistent-workspaces": {
-      "*": 5
+      "*": 1
     }
   },
   "custom/updates": {
