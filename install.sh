@@ -204,6 +204,11 @@ main() {
     change_shell
     setup_git
     
+    echo "--> Configuring PlatformIO UDEV Rules..."
+    curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/system/99-platformio-udev.rules | sudo tee /etc/udev/rules.d/99-platformio-udev.rules > /dev/null
+    sudo udevadm control --reload-rules || true
+    sudo udevadm trigger || true
+    
     echo "--> Configuring Pacman Tweaks..."
     sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
     sudo grep -q "^ILoveCandy" /etc/pacman.conf || sudo sed -i '/^Color/a ILoveCandy' /etc/pacman.conf
