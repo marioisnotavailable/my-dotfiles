@@ -43,6 +43,13 @@
       "interval": 60000,
       "on_click_left": "/home/mirko/.config/ironbar/scripts/github-open.sh",
       "on_click_right": "/home/mirko/.config/ironbar/scripts/github-switch.sh"
+    },
+    {
+      "type": "music",
+      "class": "music",
+      "format": "{title} 󰎆",
+      "truncate": "end",
+      "max_length": 35
     }
   ],
   "center": [
@@ -53,13 +60,6 @@
     }
   ],
   "end": [
-    {
-      "type": "music",
-      "class": "music",
-      "format": "{title} 󰎆",
-      "truncate": "end",
-      "max_length": 35
-    },
     {
       "type": "tray",
       "class": "tray"
@@ -76,7 +76,7 @@
       "class": "battery",
       "format": "{icon} {percentage}%",
       "show_if": {
-        "cmd": "sh -c \"ls /sys/class/power_supply/ | grep -qi '^BAT' && echo true || echo false\"",
+        "cmd": "/home/mirko/.config/ironbar/scripts/battery-check.sh",
         "mode": "oneshot"
       }
     },
