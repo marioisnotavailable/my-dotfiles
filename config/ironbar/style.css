@@ -64,7 +64,7 @@ window, #bar {
 /* ==========================================================
    THE "ISLAND" PILLS (The outer containers)
    ========================================================== */
-#bar .arch, #bar .workspaces, #bar .github, #bar .clock, #bar .tray, #bar .music, #bar .stats-group, #bar .volume, #bar .power {
+#bar .arch, #bar .workspaces, #bar .github, #bar .clock, #bar .tray, #bar .music, #bar .network, #bar .battery, #bar .stats-group, #bar .volume, #bar .power {
   background-color: rgba(30, 30, 46, 0.85);
   color: @text;
   border-radius: 999px; 
@@ -133,6 +133,8 @@ window, #bar {
 #bar .clock { color: @text; font-weight: 800; }
 #bar .music { color: @pink; }
 #bar .volume { color: @peach; }
+#bar .network { color: @lavender; }
+#bar .battery { color: @green; }
 
 /* Combined Stats Pill */
 #bar .stats-group label {

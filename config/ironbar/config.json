@@ -65,6 +65,22 @@
       "class": "tray"
     },
     {
+      "type": "script",
+      "class": "network",
+      "cmd": "/home/mirko/.config/ironbar/scripts/net-status.sh",
+      "mode": "poll",
+      "interval": 2000
+    },
+    {
+      "type": "battery",
+      "class": "battery",
+      "format": "{icon} {percentage}%",
+      "show_if": {
+        "cmd": "sh -c \"ls /sys/class/power_supply/ | grep -qi '^BAT' && echo true || echo false\"",
+        "mode": "oneshot"
+      }
+    },
+    {
       "type": "custom",
       "class": "stats-group",
       "bar": [
