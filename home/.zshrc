@@ -111,3 +111,5 @@ function clear_fastfetch_on_first_cmd() {
 
 autoload -Uz add-zsh-hook
 add-zsh-hook preexec clear_fastfetch_on_first_cmd
+export PATH=$PATH:/home/mirko/.spicetify
+

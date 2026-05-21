@@ -2,10 +2,25 @@
 // MY NIRI CONFIGURATION (PORTED FROM HYPRLAND)
 // ==========================================
 
+// Tell apps not to draw their own titlebars/decorations
+prefer-no-csd
+
+// Make inactive windows slightly transparent
+window-rule {
+    match is-focused=false
+    opacity 0.90
+}
+
+window-rule {
+    match is-focused=true
+    opacity 0.98
+}
+
 // Autostart Services
-spawn-at-startup "sh" "-c" "swww-daemon & sleep 1 && swww img ~/.local/share/dotfiles/current/background"
-spawn-at-startup "waybar"
+spawn-at-startup "swaybg" "-o" "*" "-c" "#000000" "-o" "DP-2" "-i" "/mnt/storage/1346679.jpg" "-m" "fill"
+spawn-at-startup "ironbar"
 spawn-at-startup "dunst"
+spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "udiskie" "-t"
 spawn-at-startup "nm-applet"
 spawn-at-startup "polkit-gnome-authentication-agent-1"
@@ -61,6 +76,7 @@ binds {
     Mod+B { spawn "firefox"; }
     Mod+E { spawn "nautilus" "--new-window"; }
     Mod+D { spawn "fuzzel"; }
+    Mod+V { spawn "bash" "-c" "cliphist list | fuzzel --dmenu --prompt '󰅍 Clipboard: ' | cliphist decode | wl-copy && wtype -M ctrl -k v -m ctrl"; }
     
     Mod+Ctrl+O { spawn "wezterm" "-e" "ollama-chat"; }
     Mod+Ctrl+N { spawn "sunsetr-toggle"; }
@@ -112,8 +128,10 @@ binds {
     Mod+Shift+9 { move-column-to-workspace 9; }
 
     // --- Screenshots ---
-    Print { spawn "sh" "-c" "grim -g \"$(slurp)\" -c"; }
-    Mod+Print { spawn "grim" "-c"; }
+    // Super + Shift + S: Bereich auswählen & direkt in die Zwischenablage kopieren
+    Mod+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp)\" - | wl-copy"; }
+    // Druck-Taste: Niri's eigenes, interaktives Screenshot-Tool (speichert auch ein Bild)
+    Print { screenshot; }
 
     // --- Media & Volume (SwayOSD Integration) ---
     XF86AudioPlay { spawn "playerctl" "play-pause"; }

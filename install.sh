@@ -69,10 +69,10 @@ install_packages() {
         neovim lazygit visual-studio-code-insiders-bin clion datagrip clion-jre datagrip-jre
 
         # Window Manager, Wayland Base & Theming
-        niri fuzzel waybar mako dunst swayosd polkit-gnome gnome-keyring xdg-desktop-portal-gtk xdg-utils satty sunsetr tinte walker xar qt5ct qt6ct qt6-wayland matugen swww
+        niri fuzzel ironbar wlogout swaybg dunst swayosd polkit-gnome gnome-keyring xdg-desktop-portal-gtk xdg-utils satty sunsetr tinte walker xar qt5ct qt6ct qt6-wayland matugen swww
 
         # Media & Screen (Screenshot, Images, Video)
-        grim slurp wl-clipboard wl-paste imv mpv vlc yt-dlp ffmpeg imagemagick loupe gpu-screen-recorder handbrake-cli tesseract tesseract-data-eng
+        grim slurp wl-clipboard wl-paste cliphist wtype imv mpv vlc yt-dlp ffmpeg imagemagick loupe gpu-screen-recorder handbrake-cli tesseract tesseract-data-eng
 
         # Audio & Volume Controls
         pipewire wireplumber pipewire-pulse pipewire-alsa pipewire-jack gst-plugin-pipewire pavucontrol pamixer wiremix playerctl libpulse
@@ -210,18 +210,6 @@ setup_git() {
 }
 
 main() {
-    install_yay
-    install_packages
-    setup_nvidia
-    link_dotfiles
-    change_shell
-    setup_git
-    
-    echo "--> Configuring PlatformIO UDEV Rules..."
-    curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/system/99-platformio-udev.rules | sudo tee /etc/udev/rules.d/99-platformio-udev.rules > /dev/null
-    sudo udevadm control --reload-rules || true
-    sudo udevadm trigger || true
-    
     echo "--> Configuring Pacman Tweaks & Multilib..."
     sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
     sudo grep -q "^ILoveCandy" /etc/pacman.conf || sudo sed -i '/^Color/a ILoveCandy' /etc/pacman.conf
@@ -236,6 +224,18 @@ s/^#\[multilib\]\n#Include/\[multilib\]\nInclude/
 }' /etc/pacman.conf
         sudo pacman -Sy --noconfirm
     fi
+
+    install_yay
+    install_packages
+    setup_nvidia
+    link_dotfiles
+    change_shell
+    setup_git
+    
+    echo "--> Configuring PlatformIO UDEV Rules..."
+    curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/system/99-platformio-udev.rules | sudo tee /etc/udev/rules.d/99-platformio-udev.rules > /dev/null
+    sudo udevadm control --reload-rules || true
+    sudo udevadm trigger || true
 
     echo "--> Enabling User and Systemd Services..."
     systemctl --user daemon-reload || true

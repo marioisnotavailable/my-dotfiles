@@ -1,0 +1,170 @@
+/* ==========================================================
+   IRONBAR "WAYBAR-STYLE" FLOATING PILLS (MINIMALIST)
+   ========================================================== */
+
+@define-color base      #1e1e2e;
+@define-color mantle    #181825;
+@define-color crust     #11111b;
+@define-color surface0  #313244;
+@define-color surface1  #45475a;
+@define-color surface2  #585b70;
+@define-color overlay0  #6c7086;
+@define-color text      #cdd6f4;
+@define-color subtext0  #a6adc8;
+
+@define-color blue      #89b4fa;
+@define-color lavender  #b4befe;
+@define-color green     #a6e3a1;
+@define-color yellow    #f9e2af;
+@define-color peach     #fab387;
+@define-color red       #f38ba8;
+@define-color mauve     #cba6f7;
+@define-color pink      #f5c2e7;
+
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+  outline: none;
+}
+
+window, #bar {
+  background-color: transparent;
+}
+
+/* Reset Native GTK Buttons */
+#bar button, #bar menubutton, #bar menuitem {
+  background-color: transparent;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+  min-height: 0;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+}
+
+#bar button:hover, #bar menubutton:hover {
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+}
+
+#bar popover contents {
+  background-color: @base;
+  border: 2px solid @surface1;
+  border-radius: 12px;
+  padding: 8px;
+  color: @text;
+}
+
+/* ==========================================================
+   THE "ISLAND" PILLS (The outer containers)
+   ========================================================== */
+#bar .arch, #bar .workspaces, #bar .github, #bar .clock, #bar .tray, #bar .music, #bar .stats-group, #bar .volume, #bar .power {
+  background-color: rgba(30, 30, 46, 0.85);
+  color: @text;
+  border-radius: 999px; 
+  margin: 4px 6px; 
+  padding: 4px 18px;
+}
+
+#bar .arch > box, #bar .power > box {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* ==========================================================
+   MODULE TWEAKS
+   ========================================================== */
+
+#bar .arch label {
+  color: @blue;
+  font-size: 18px;
+}
+
+#bar .power label {
+  color: @red;
+  font-size: 16px;
+}
+
+/* Workspaces */
+#bar .workspaces {
+  padding: 0 8px;
+}
+
+/* Fix desktop dots (made them bigger and less squished vertically) */
+#bar .workspaces .item {
+  background-color: @surface1;
+  margin: 4px 6px; /* Less vertical margin, more horizontal */
+  border-radius: 999px;
+  min-width: 18px;  /* Much bigger */
+  min-height: 18px; /* Much bigger */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#bar .workspaces .item label { 
+  font-size: 0;
+  color: transparent;
+}
+
+#bar .workspaces .item:hover {
+  background-color: @overlay0;
+}
+
+#bar .workspaces .item.focused {
+  background-color: @mauve;
+  min-width: 48px; /* Bigger active pill */
+}
+
+/* GitHub */
+#bar .github {
+  color: @text;
+  font-weight: 800;
+}
+#bar .github:hover {
+  color: @blue;
+}
+
+/* Colors for specific modules */
+#bar .clock { color: @text; font-weight: 800; }
+#bar .music { color: @pink; }
+#bar .volume { color: @peach; }
+
+/* Combined Stats Pill */
+#bar .stats-group label {
+  color: @green;
+  margin: 0 5px;
+}
+
+/* Miscellaneous Spacing */
+#bar .volume label { margin: 0 2px; }
+#bar .volume image { margin-right: 4px; font-size: 16px; }
+
+/* ==========================================================
+   TRAY
+   ========================================================== */
+#bar .tray {
+  padding: 0 6px;
+}
+
+#bar .tray > box > * {
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+#bar .tray image {
+  font-size: 16px;
+  color: @text;
+  margin: 0 4px;
+}
+
+#bar .tray button, 
+#bar .tray menubutton, 
+#bar .tray menuitem {
+  padding: 0 4px;
+  margin: 0 4px;
+}
