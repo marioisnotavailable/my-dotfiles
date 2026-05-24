@@ -101,8 +101,8 @@ window, #bar {
   background-color: @surface1;
   margin: 4px 4px; /* Less vertical margin, more horizontal */
   border-radius: 999px;
-  min-width: 12px;  /* Much bigger */
-  min-height: 12px; /* Much bigger */
+  min-width: 8px;  
+  min-height: 8px; 
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
