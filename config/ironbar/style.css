@@ -130,10 +130,10 @@ window, #bar {
 }
 
 /* Colors for specific modules */
-#bar .clock { color: @text; font-weight: 800; min-width: 130px; justify-content: center; }
+#bar .clock { color: @text; font-weight: 800; min-width: 130px; justify-content: center; font-feature-settings: "tnum"; }
 #bar .music { color: @pink; max-width: 160px; }
-#bar .volume { color: @peach; }
-#bar .network { color: @lavender; }
+#bar .volume { color: @peach; min-width: 70px; justify-content: center; }
+#bar .network { color: @lavender; min-width: 130px; justify-content: center; font-feature-settings: "tnum"; }
 #bar .battery { color: @green; }
 
 /* Combined Stats Pill */
@@ -143,6 +143,8 @@ window, #bar {
 #bar .stats-group label {
   color: @green;
   margin: 0 5px;
+  min-width: 55px;
+  font-feature-settings: "tnum";
 }
 
 /* Miscellaneous Spacing */
