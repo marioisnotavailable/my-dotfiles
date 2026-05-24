@@ -49,14 +49,7 @@
       "class": "music",
       "format": "{title} 󰎆",
       "truncate": "end",
-      "max_length": 35
-    },
-    {
-      "type": "script",
-      "class": "network",
-      "cmd": "/home/mirko/.config/ironbar/scripts/net-status.sh",
-      "mode": "poll",
-      "interval": 2000
+      "max_length": 25
     }
   ],
   "center": [
@@ -70,6 +63,13 @@
     {
       "type": "tray",
       "class": "tray"
+    },
+    {
+      "type": "script",
+      "class": "network",
+      "cmd": "/home/mirko/.config/ironbar/scripts/net-status.sh",
+      "mode": "poll",
+      "interval": 2000
     },
     {
       "type": "script",

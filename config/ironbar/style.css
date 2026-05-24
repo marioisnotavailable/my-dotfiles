@@ -130,13 +130,17 @@ window, #bar {
 }
 
 /* Colors for specific modules */
-#bar .clock { color: @text; font-weight: 800; }
-#bar .music { color: @pink; }
-#bar .volume { color: @peach; }
-#bar .network { color: @lavender; }
-#bar .battery { color: @green; }
+#bar .clock { color: @text; font-weight: 800; min-width: 130px; justify-content: center; }
+#bar .music { color: @pink; max-width: 250px; }
+#bar .volume { color: @peach; min-width: 80px; justify-content: center; }
+#bar .network { color: @lavender; min-width: 140px; justify-content: center; }
+#bar .battery { color: @green; min-width: 80px; justify-content: center; }
 
 /* Combined Stats Pill */
+#bar .stats-group {
+  min-width: 180px;
+  justify-content: center;
+}
 #bar .stats-group label {
   color: @green;
   margin: 0 5px;
