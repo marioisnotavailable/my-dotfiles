@@ -93,13 +93,13 @@
             {
               "type": "sys_info",
               "format": [
-                "󰍛 {cpu_percent}%",
-                "󰾆 {memory_percent}%"
+                "󰍛{cpu_percent}%",
+                "󰾆{memory_percent}%"
               ]
             },
             {
               "type": "script",
-              "cmd": "echo \"󰢮 $(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | tr -d '[:space:]')%\"",
+              "cmd": "echo \"󰢮$(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | tr -d '[:space:]')%\"",
               "mode": "poll",
               "interval": 2000
             }

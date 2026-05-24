@@ -34,11 +34,11 @@ echo "$R2 $T2 $TIME2" > "$CACHE"
 
 function format_speed {
     if [ $1 -ge 1048576 ]; then
-        awk "BEGIN {printf \"%.1f MB/s\", $1/1048576}"
+        awk "BEGIN {printf \"%5.1fM\", $1/1048576}"
     elif [ $1 -ge 1024 ]; then
-        awk "BEGIN {printf \"%.0f KB/s\", $1/1024}"
+        awk "BEGIN {printf \"%5.0fK\", $1/1024}"
     else
-        echo "$1 B/s"
+        awk "BEGIN {printf \"%5.0fB\", $1}"
     fi
 }
 
