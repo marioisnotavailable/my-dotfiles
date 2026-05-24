@@ -47,11 +47,11 @@
           "on_click_right": "/home/mirko/.config/ironbar/scripts/github-switch.sh"
         },
         {
-          "type": "music",
+          "type": "script",
           "class": "music",
-          "format": "{title} 󰎆",
-          "truncate": "end",
-          "max_length": 25
+          "cmd": "~/.config/ironbar/scripts/dynamic-music.sh",
+          "mode": "poll",
+          "interval": 1000
         }
       ],
       "center": [
