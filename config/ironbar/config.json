@@ -50,6 +50,13 @@
       "format": "{title} 󰎆",
       "truncate": "end",
       "max_length": 35
+    },
+    {
+      "type": "script",
+      "class": "network",
+      "cmd": "/home/mirko/.config/ironbar/scripts/net-status.sh",
+      "mode": "poll",
+      "interval": 2000
     }
   ],
   "center": [
@@ -66,15 +73,10 @@
     },
     {
       "type": "script",
-      "class": "network",
-      "cmd": "/home/mirko/.config/ironbar/scripts/net-status.sh",
-      "mode": "poll",
-      "interval": 2000
-    },
-    {
-      "type": "battery",
       "class": "battery",
-      "format": "{icon} {percentage}%",
+      "cmd": "/home/mirko/.config/ironbar/scripts/battery-status.sh",
+      "mode": "poll",
+      "interval": 10000,
       "show_if": {
         "cmd": "/home/mirko/.config/ironbar/scripts/battery-check.sh",
         "mode": "oneshot"
