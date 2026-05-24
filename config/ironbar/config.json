@@ -50,8 +50,7 @@
           "type": "music",
           "class": "music",
           "format": "{title} 󰎆",
-          "truncate": "end",
-          "max_length": 15
+          "truncate": "end"
         }
       ],
       "center": [

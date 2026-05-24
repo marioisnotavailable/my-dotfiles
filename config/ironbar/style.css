@@ -133,7 +133,7 @@ window, #bar {
 #bar .clock { color: @text; font-weight: 800; min-width: 130px; justify-content: center; font-feature-settings: "tnum"; }
 #bar .music { color: @pink; max-width: 160px; }
 #bar .volume { color: @peach; min-width: 70px; justify-content: center; }
-#bar .network { color: @lavender; min-width: 130px; justify-content: center; font-feature-settings: "tnum"; }
+#bar .network { color: @lavender; justify-content: center; font-feature-settings: "tnum"; }
 #bar .battery { color: @green; }
 
 /* Combined Stats Pill */
@@ -159,8 +159,8 @@ window, #bar {
 }
 
 #bar .tray > box > * {
-  margin-left: 2px;
-  margin-right: 2px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 #bar .tray image {
