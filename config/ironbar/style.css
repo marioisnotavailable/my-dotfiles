@@ -156,7 +156,7 @@ window, #bar {
    TRAY
    ========================================================== */
 #bar .tray {
-  min-width: 120px;
+  min-width: 40px;
 }
 
 #bar .tray > box > * {
