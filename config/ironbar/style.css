@@ -99,10 +99,10 @@ window, #bar {
 /* Fix desktop dots (made them bigger and less squished vertically) */
 #bar .workspaces .item {
   background-color: @surface1;
-  margin: 4px 6px; /* Less vertical margin, more horizontal */
+  margin: 4px 4px; /* Less vertical margin, more horizontal */
   border-radius: 999px;
-  min-width: 18px;  /* Much bigger */
-  min-height: 18px; /* Much bigger */
+  min-width: 12px;  /* Much bigger */
+  min-height: 12px; /* Much bigger */
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -117,7 +117,7 @@ window, #bar {
 
 #bar .workspaces .item.focused {
   background-color: @mauve;
-  min-width: 48px; /* Bigger active pill */
+  min-width: 32px; /* Bigger active pill */
 }
 
 /* GitHub */
@@ -144,6 +144,7 @@ window, #bar {
 #bar .stats-group label {
   color: @green;
   margin: 0 5px;
+  min-width: 60px;
 }
 
 /* Miscellaneous Spacing */
