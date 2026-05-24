@@ -1,135 +1,138 @@
 {
-  "monitor": "DP-2",
-  "position": "top",
-  "height": 40,
-  "icon_theme": "breeze-dark",
-  "margin": {
-    "top": 8,
-    "bottom": 0,
-    "left": 16,
-    "right": 16
-  },
-  "start": [
-    {
-      "type": "custom",
-      "class": "arch",
-      "on_click_left": "fuzzel",
-      "bar": [
+  "monitors": {
+    "DP-2": {
+      "position": "top",
+      "height": 40,
+      "icon_theme": "breeze-dark",
+      "margin": {
+        "top": 8,
+        "bottom": 0,
+        "left": 16,
+        "right": 16
+      },
+      "start": [
         {
-          "type": "label",
-          "label": "󰣇"
+          "type": "custom",
+          "class": "arch",
+          "on_click_left": "fuzzel",
+          "bar": [
+            {
+              "type": "label",
+              "label": "󰣇"
+            }
+          ]
+        },
+        {
+          "type": "workspaces",
+          "class": "workspaces",
+          "name_map": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": ""
+          }
+        },
+        {
+          "type": "script",
+          "class": "github",
+          "cmd": "/home/mirko/.config/ironbar/scripts/github-monitor.sh",
+          "mode": "poll",
+          "interval": 60000,
+          "on_click_left": "/home/mirko/.config/ironbar/scripts/github-open.sh",
+          "on_click_right": "/home/mirko/.config/ironbar/scripts/github-switch.sh"
+        },
+        {
+          "type": "music",
+          "class": "music",
+          "format": "{title} 󰎆",
+          "truncate": "end",
+          "max_length": 25
         }
-      ]
-    },
-    {
-      "type": "workspaces",
-      "class": "workspaces",
-      "name_map": {
-        "1": "",
-        "2": "",
-        "3": "",
-        "4": "",
-        "5": "",
-        "6": "",
-        "7": "",
-        "8": "",
-        "9": ""
-      }
-    },
-    {
-      "type": "script",
-      "class": "github",
-      "cmd": "/home/mirko/.config/ironbar/scripts/github-monitor.sh",
-      "mode": "poll",
-      "interval": 60000,
-      "on_click_left": "/home/mirko/.config/ironbar/scripts/github-open.sh",
-      "on_click_right": "/home/mirko/.config/ironbar/scripts/github-switch.sh"
-    },
-    {
-      "type": "music",
-      "class": "music",
-      "format": "{title} 󰎆",
-      "truncate": "end",
-      "max_length": 25
-    }
-  ],
-  "center": [
-    {
-      "type": "clock",
-      "class": "clock",
-      "format": "󰃰  %H:%M  ⸱  %d. %b"
-    }
-  ],
-  "end": [
-    {
-      "type": "tray",
-      "class": "tray"
-    },
-    {
-      "type": "script",
-      "class": "network",
-      "cmd": "/home/mirko/.config/ironbar/scripts/net-status.sh",
-      "mode": "poll",
-      "interval": 2000
-    },
-    {
-      "type": "script",
-      "class": "battery",
-      "cmd": "/home/mirko/.config/ironbar/scripts/battery-status.sh",
-      "mode": "poll",
-      "interval": 10000,
-      "show_if": {
-        "cmd": "/home/mirko/.config/ironbar/scripts/battery-check.sh",
-        "mode": "oneshot"
-      }
-    },
-    {
-      "type": "custom",
-      "class": "stats-group",
-      "bar": [
+      ],
+      "center": [
         {
-          "type": "box",
-          "orientation": "horizontal",
-          "widgets": [
+          "type": "clock",
+          "class": "clock",
+          "format": "󰃰  %H:%M  ⸱  %d. %b"
+        }
+      ],
+      "end": [
+        {
+          "type": "tray",
+          "class": "tray"
+        },
+        {
+          "type": "script",
+          "class": "network",
+          "cmd": "/home/mirko/.config/ironbar/scripts/net-status.sh",
+          "mode": "poll",
+          "interval": 2000
+        },
+        {
+          "type": "script",
+          "class": "battery",
+          "cmd": "/home/mirko/.config/ironbar/scripts/battery-status.sh",
+          "mode": "poll",
+          "interval": 10000,
+          "show_if": {
+            "cmd": "/home/mirko/.config/ironbar/scripts/battery-check.sh",
+            "mode": "oneshot"
+          }
+        },
+        {
+          "type": "custom",
+          "class": "stats-group",
+          "bar": [
             {
-              "type": "sys_info",
-              "format": [
-                "󰍛 {cpu_percent}%",
-                "󰾆 {memory_percent}%"
+              "type": "box",
+              "orientation": "horizontal",
+              "widgets": [
+                {
+                  "type": "sys_info",
+                  "format": [
+                    "󰍛 {cpu_percent}%",
+                    "󰾆 {memory_percent}%"
+                  ]
+                },
+                {
+                  "type": "script",
+                  "cmd": "echo \"󰢮 $(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | tr -d '[:space:]')%\"",
+                  "mode": "poll",
+                  "interval": 2000
+                }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "type": "volume",
+          "class": "volume",
+          "format": "{icon} {percentage}%",
+          "show_sources": false,
+          "show_monitors": false,
+          "on_click_right": "pavucontrol",
+          "icons": {
+            "volume": "",
+            "muted": "󰝟"
+          }
+        },
+        {
+          "type": "custom",
+          "class": "power",
+          "on_click_left": "wlogout",
+          "bar": [
             {
-              "type": "script",
-              "cmd": "echo \"󰢮 $(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | tr -d '[:space:]')%\"",
-              "mode": "poll",
-              "interval": 2000
+              "type": "label",
+              "label": ""
             }
           ]
         }
       ]
-    },
-    {
-      "type": "volume",
-      "class": "volume",
-      "format": "{icon} {percentage}%",
-      "show_sources": false,
-      "show_monitors": false,
-      "on_click_right": "pavucontrol",
-      "icons": {
-        "volume": "",
-        "muted": "󰝟"
-      }
-    },
-    {
-      "type": "custom",
-      "class": "power",
-      "on_click_left": "wlogout",
-      "bar": [
-        {
-          "type": "label",
-          "label": ""
-        }
-      ]
     }
-  ]
+  }
 }
