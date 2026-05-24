@@ -69,7 +69,7 @@ window, #bar {
   color: @text;
   border-radius: 999px; 
   margin: 4px 6px; 
-  padding: 4px 18px;
+  padding: 4px 12px;
 }
 
 #bar .arch > box, #bar .power > box {
@@ -130,15 +130,16 @@ window, #bar {
 }
 
 /* Colors for specific modules */
-#bar .clock { color: @text; font-weight: 800; min-width: 130px; justify-content: center; font-feature-settings: "tnum"; }
+#bar .clock { color: @text; font-weight: 800; justify-content: center; font-feature-settings: "tnum"; }
 #bar .music { color: @pink; max-width: 160px; }
 #bar .volume { color: @peach; min-width: 70px; justify-content: center; }
-#bar .network { color: @lavender; justify-content: center; font-feature-settings: "tnum"; }
+#bar .network { color: @lavender; min-width: 235px; justify-content: center; font-feature-settings: "tnum"; }
 #bar .battery { color: @green; }
 
 /* Combined Stats Pill */
 #bar .stats-group {
   justify-content: center;
+  min-width: 215px;
 }
 #bar .stats-group label {
   color: @green;
@@ -155,7 +156,7 @@ window, #bar {
    TRAY
    ========================================================== */
 #bar .tray {
-  padding: 0 4px;
+  min-width: 120px;
 }
 
 #bar .tray > box > * {
@@ -166,12 +167,12 @@ window, #bar {
 #bar .tray image {
   font-size: 16px;
   color: @text;
-  margin: 0 2px;
+  margin: 0 4px;
 }
 
 #bar .tray button, 
 #bar .tray menubutton, 
 #bar .tray menuitem {
-  padding: 0 2px;
-  margin: 0 2px;
+  padding: 0;
+  margin: 0;
 }
