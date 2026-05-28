@@ -1,9 +1,9 @@
 {
+  "icon_theme": "breeze-dark",
   "monitors": {
     "DP-2": {
       "position": "top",
       "height": 40,
-      "icon_theme": "breeze-dark",
       "margin": {
         "top": 8,
         "bottom": 0,
@@ -51,6 +51,13 @@
           "class": "music",
           "format": "{title} 󰎆",
           "truncate": "end"
+        },
+        {
+          "type": "script",
+          "class": "network",
+          "cmd": "/home/mirko/.config/ironbar/scripts/net-status.sh",
+          "mode": "poll",
+          "interval": 2000
         }
       ],
       "center": [
@@ -63,14 +70,8 @@
       "end": [
         {
           "type": "tray",
-          "class": "tray"
-        },
-        {
-          "type": "script",
-          "class": "network",
-          "cmd": "/home/mirko/.config/ironbar/scripts/net-status.sh",
-          "mode": "poll",
-          "interval": 2000
+          "class": "tray",
+          "icon_size": 22
         },
         {
           "type": "script",

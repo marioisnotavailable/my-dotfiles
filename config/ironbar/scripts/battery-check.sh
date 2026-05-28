@@ -1,6 +1,6 @@
 #!/bin/bash
 if ls /sys/class/power_supply/ 2>/dev/null | grep -qi '^BAT'; then
-    exit 0
+    echo "true"
 else
-    exit 1
+    echo "false"
 fi
