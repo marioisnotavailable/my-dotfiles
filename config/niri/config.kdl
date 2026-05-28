@@ -18,7 +18,7 @@ window-rule {
 
 // Autostart Services
 spawn-at-startup "swaybg" "-o" "*" "-c" "#000000" "-o" "DP-2" "-i" "/mnt/storage/1346679.jpg" "-m" "fill"
-spawn-at-startup "ironbar"
+spawn-at-startup "env" "GSK_RENDERER=ngl" "ironbar"
 spawn-at-startup "dunst"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "udiskie" "-t"

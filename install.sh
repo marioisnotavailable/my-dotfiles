@@ -93,7 +93,7 @@ install_packages() {
         elephant elephant-calc elephant-clipboard elephant-desktopapplications elephant-files elephant-menus elephant-providerlist elephant-symbols elephant-todo
 
         # Other Applications
-        discord vesktop-bin spotify libreoffice-fresh onlyoffice-bin keepassxc ollama localsend-bin kdeconnect kicad wireshark-qt krita aniworld-cli claude-code scilab-bin teams-for-linux-bin bambustudio-nvidia-bin github-desktop-bin beets picard strawberry high-tide impala input-leap-bin winboat-bin
+        discord spotify libreoffice-fresh onlyoffice-bin keepassxc ollama localsend-bin kdeconnect kicad wireshark-qt krita aniworld-cli claude-code scilab-bin teams-for-linux-bin bambustudio-nvidia-bin github-desktop-bin beets picard strawberry high-tide impala input-leap-bin winboat-bin
 
         # Flatpak
         flatpak
@@ -112,13 +112,8 @@ setup_nvidia() {
         yay -S --noconfirm --needed nvidia-open nvidia-utils nvidia-settings egl-wayland
 
         # Set Wayland environment variables for Nvidia
-        mkdir -p "$HOME/.config/environment.d"
-        cat > "$HOME/.config/environment.d/10-nvidia.conf" << 'EOF'
-LIBVA_DRIVER_NAME=nvidia
-GBM_BACKEND=nvidia-drm
-__GLX_VENDOR_LIBRARY_NAME=nvidia
-WLR_NO_HARDWARE_CURSORS=1
-EOF
+        # NOTE: 10-nvidia.conf is now in config/environment.d/ in dotfiles
+        # Will be linked by link_dotfiles automatically
 
         # Configure modprobe and mkinitcpio (early KMS) - Bootloader independent (works great for systemd-boot)
         echo "--> Configuring kernel modules (Early KMS for Nvidia)..."
