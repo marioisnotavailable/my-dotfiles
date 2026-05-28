@@ -176,6 +176,20 @@ link_dotfiles() {
             echo "Linked $target -> $home_file"
         fi
     done
+
+    # Link individual files inside home/.local/share/ (not the whole dir, as ~/.local may have other data)
+    while IFS= read -r -d '' src; do
+        rel="${src#$DOTFILES_DIR/home/}"
+        target="$HOME/$rel"
+        mkdir -p "$(dirname "$target")"
+        if [ -e "$target" ] || [ -L "$target" ]; then
+            echo "Backing up existing $target to $target.bak"
+            rm -rf "$target.bak" 2>/dev/null || true
+            mv "$target" "$target.bak"
+        fi
+        ln -s "$src" "$target"
+        echo "Linked $target -> $src"
+    done < <(find "$DOTFILES_DIR/home/.local" -type f -print0 2>/dev/null)
 }
 
 # 5. Change Default Shell
@@ -237,15 +251,6 @@ s/^#\[multilib\]\n#Include/\[multilib\]\nInclude/
     systemctl --user unmask xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-wlr 2>/dev/null || true
     systemctl --user enable --now xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-wlr 2>/dev/null || true
 
-    # Create portal override for Niri (UseIn=niri)
-    echo "--> Configuring portal backend for Niri..."
-    mkdir -p "$HOME/.local/share/xdg-desktop-portal/portals"
-    tee "$HOME/.local/share/xdg-desktop-portal/portals/wlr.portal" > /dev/null << 'EOF'
-[portal]
-DBusName=org.freedesktop.impl.portal.desktop.wlr
-Interfaces=org.freedesktop.impl.portal.Screenshot;org.freedesktop.impl.portal.ScreenCast;
-UseIn=niri;
-EOF
     systemctl --user daemon-reload || true
     systemctl --user enable --now walker.service swayosd.service elephant.service 2>/dev/null || true
     sudo systemctl enable --now cups.service
