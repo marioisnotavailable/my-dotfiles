@@ -236,6 +236,16 @@ s/^#\[multilib\]\n#Include/\[multilib\]\nInclude/
     # Unmask and start portal services (required for Wayland screenshare)
     systemctl --user unmask xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-wlr 2>/dev/null || true
     systemctl --user enable --now xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-wlr 2>/dev/null || true
+
+    # Create portal override for Niri (UseIn=niri)
+    echo "--> Configuring portal backend for Niri..."
+    mkdir -p "$HOME/.local/share/xdg-desktop-portal/portals"
+    tee "$HOME/.local/share/xdg-desktop-portal/portals/wlr.portal" > /dev/null << 'EOF'
+[portal]
+DBusName=org.freedesktop.impl.portal.desktop.wlr
+Interfaces=org.freedesktop.impl.portal.Screenshot;org.freedesktop.impl.portal.ScreenCast;
+UseIn=niri;
+EOF
     systemctl --user daemon-reload || true
     systemctl --user enable --now walker.service swayosd.service elephant.service 2>/dev/null || true
     sudo systemctl enable --now cups.service
