@@ -69,7 +69,7 @@ install_packages() {
         neovim lazygit visual-studio-code-insiders-bin clion datagrip clion-jre datagrip-jre
 
         # Window Manager, Wayland Base & Theming
-        niri fuzzel ironbar wlogout swaybg dunst swayosd polkit-gnome gnome-keyring xdg-desktop-portal xdg-desktop-portal-gtk xdg-utils satty sunsetr tinte walker xar qt5ct qt6ct qt6-wayland matugen swww
+        niri fuzzel ironbar wlogout swaybg dunst swayosd polkit-gnome gnome-keyring xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-utils satty sunsetr tinte walker xar qt5ct qt6ct qt6-wayland matugen swww
 
         # Media & Screen (Screenshot, Images, Video)
         grim slurp wl-clipboard wl-paste cliphist wtype imv mpv vlc yt-dlp ffmpeg imagemagick loupe gpu-screen-recorder handbrake-cli tesseract tesseract-data-eng
@@ -234,8 +234,8 @@ s/^#\[multilib\]\n#Include/\[multilib\]\nInclude/
 
     echo "--> Enabling User and Systemd Services..."
     # Unmask and start portal services (required for Wayland screenshare)
-    systemctl --user unmask xdg-desktop-portal xdg-desktop-portal-gtk 2>/dev/null || true
-    systemctl --user enable --now xdg-desktop-portal xdg-desktop-portal-gtk 2>/dev/null || true
+    systemctl --user unmask xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-wlr 2>/dev/null || true
+    systemctl --user enable --now xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-wlr 2>/dev/null || true
     systemctl --user daemon-reload || true
     systemctl --user enable --now walker.service swayosd.service elephant.service 2>/dev/null || true
     sudo systemctl enable --now cups.service
