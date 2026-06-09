@@ -63,7 +63,7 @@ install_packages() {
         chromium firefox
 
         # File Managers
-        nautilus yazi nautilus-open-any-terminal
+        dolphin yazi
 
         # Editors & IDEs
         neovim lazygit visual-studio-code-insiders-bin clion datagrip clion-jre datagrip-jre
@@ -97,12 +97,18 @@ install_packages() {
 
         # Flatpak
         flatpak
+        rsync
+        unrar
+        p7zip
+        openssh
+        nmap
+        neomutt
     )
     
     yay -S --noconfirm --needed "${pkgs[@]}"
 
     echo "--> Installing Flatpaks..."
-    flatpak install -y flathub com.usebottles.bottles org.vinegarhq.Sober || true
+    flatpak install -y flathub com.usebottles.bottles org.vinegarhq.Sober org.kde.dolphin || true
 }
 
 # 3. Configure Nvidia (If Present)

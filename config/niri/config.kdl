@@ -16,6 +16,15 @@ window-rule {
     opacity 0.98
 }
 
+window-rule {
+    match app-id=r#"^steam_app_"#
+    open-fullscreen true
+}
+
+environment {
+    PROTON_ENABLE_WAYLAND "1"
+}
+
 // Autostart Services
 spawn-at-startup "swaybg" "-o" "*" "-c" "#000000" "-o" "DP-2" "-i" "/mnt/storage/1346679.jpg" "-m" "fill"
 spawn-at-startup "env" "GSK_RENDERER=ngl" "ironbar"
