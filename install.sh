@@ -8,6 +8,7 @@ set -e
 
 # Detect if the script is being run locally or via curl/wget
 if [ -d "$HOME/.local/share/my-dotfiles" ]; then
+sudo -v
     DOTFILES_DIR="$HOME/.local/share/my-dotfiles"
 elif [ -d "$HOME/my-dotfiles" ]; then
     DOTFILES_DIR="$HOME/my-dotfiles"
@@ -199,20 +200,45 @@ link_dotfiles() {
 }
 
 # 5. Change Default Shell
+# 5. Change Default Shell
 change_shell() {
     echo "--> Changing shell to Zsh..."
     if [ "$SHELL" != "$(which zsh)" ]; then
-        chsh -s "$(which zsh)"
+        if [ -t 0 ]; then
+            chsh -s "$(which zsh)" && echo "Shell changed to Zsh"
+        else
+            echo "(non‑interactive) Skipping chsh – run 'chsh -s $(which zsh)' manually if desired"
+        fi
+    else
+        echo "Zsh is already the default shell"
     fi
 }
 
 # 6. Configure Git
 setup_git() {
     echo "--> Checking Git configuration..."
-    local git_name
-    local git_email
-
-    if ! git config --global user.name >/dev/null 2>&1; then
+    # If running interactively, ask for name/email; otherwise set defaults
+    if [ -t 0 ]; then
+        if ! git config --global user.name >/dev/null 2>&1; then
+            read -p "Enter your Git name (e.g., John Doe): " git_name
+            git config --global user.name "$git_name"
+        fi
+        if ! git config --global user.email >/dev/null 2>&1; then
+            read -p "Enter your Git email (e.g., john@example.com): " git_email
+            git config --global user.email "$git_email"
+        fi
+    else
+        # Non‑interactive defaults
+        if ! git config --global user.name >/dev/null 2>&1; then
+            git config --global user.name "Mirko"
+        fi
+        if ! git config --global user.email >/dev/null 2>&1; then
+            git config --global user.email "mirko@example.com"
+        fi
+    fi
+    echo "--> Git is configured as: $(git config --global user.name) <$(git config --global user.email)>"
+}
+    echo "--> Checking Git configuration..."
         read -p "Enter your Git name (e.g., John Doe): " git_name
         git config --global user.name "$git_name"
     fi
