@@ -200,7 +200,6 @@ link_dotfiles() {
 }
 
 # 5. Change Default Shell
-# 5. Change Default Shell
 change_shell() {
     echo "--> Changing shell to Zsh..."
     if [ "$SHELL" != "$(which zsh)" ]; then
@@ -235,17 +234,6 @@ setup_git() {
         if ! git config --global user.email >/dev/null 2>&1; then
             git config --global user.email "mirko@example.com"
         fi
-    fi
-    echo "--> Git is configured as: $(git config --global user.name) <$(git config --global user.email)>"
-}
-    echo "--> Checking Git configuration..."
-        read -p "Enter your Git name (e.g., John Doe): " git_name
-        git config --global user.name "$git_name"
-    fi
-
-    if ! git config --global user.email >/dev/null 2>&1; then
-        read -p "Enter your Git email (e.g., john@example.com): " git_email
-        git config --global user.email "$git_email"
     fi
     echo "--> Git is configured as: $(git config --global user.name) <$(git config --global user.email)>"
 }
