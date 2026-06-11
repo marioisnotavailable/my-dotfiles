@@ -65,30 +65,38 @@ window, #bar {
    THE "ISLAND" PILLS (The outer containers)
    ========================================================== */
 #bar .arch, #bar .workspaces, #bar .github, #bar .clock, #bar .tray, #bar .music, #bar .network, #bar .battery, #bar .stats-group, #bar .volume, #bar .power {
-  background-color: rgba(30, 30, 46, 0.85);
-  color: @text;
-  border-radius: 999px; 
-  margin: 4px 6px; 
-  padding: 4px 12px;
+   background-color: rgba(30, 30, 46, 0.85);
+   color: @text;
+   border-radius: 8px;
+   margin: 2px 4px;
+   padding: 2px 8px;
 }
 
-#bar .arch > box, #bar .power > box {
-  min-height: 100%;
-}
+
 
 /* ==========================================================
    MODULE TWEAKS
    ========================================================== */
 
+#bar .arch {
+  padding: 2px 14px;
+}
+
+#bar .arch box,
 #bar .arch label {
   color: @blue;
-  font-size: 18px;
+  font-size: 22px;
+  margin: 0;
+  padding: 0;
   margin-bottom: 3px;
 }
 
+#bar .power box,
 #bar .power label {
   color: @red;
-  font-size: 16px;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
   margin-bottom: 2px;
 }
 
@@ -101,7 +109,7 @@ window, #bar {
 #bar .workspaces .item {
   background-color: @surface1;
   margin: 4px 4px; /* Less vertical margin, more horizontal */
-  border-radius: 999px;
+  border-radius: 5px;
   min-width: 12px;  /* Much bigger */
   min-height: 12px; /* Much bigger */
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -130,28 +138,32 @@ window, #bar {
   color: @blue;
 }
 
-/* Colors for specific modules */
 #bar .clock { color: @text; font-weight: 800; font-feature-settings: "tnum"; }
-#bar .music { color: @pink; max-width: 160px; }
-#bar .volume { color: @peach; min-width: 70px; }
-#bar .network { color: @lavender; min-width: 235px; font-feature-settings: "tnum"; }
+#bar .music { color: @pink; }
+#bar .volume { color: @peach; }
+#bar .network { color: @lavender; font-feature-settings: "tnum"; }
 #bar .battery { color: @green; }
-
-/* Combined Stats Pill */
-#bar .stats-group {
-  justify-content: center;
-  min-width: 215px;
-}
 #bar .stats-group label {
   color: @green;
   margin: 0 5px;
   min-width: 55px;
   font-feature-settings: "tnum";
 }
+/* Volume and Power styling */
+#bar .volume label {
+    margin: 0 2px;
+}
 
-/* Miscellaneous Spacing */
-#bar .volume label { margin: 0 2px; }
-#bar .volume image { margin-right: 4px; font-size: 16px; }
+#bar .volume image {
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    min-height: 0;
+}
+
+#bar .power {
+    padding: 2px 14px;
+}
 
 /* ==========================================================
    TRAY
@@ -161,25 +173,22 @@ window, #bar {
 }
 
 #bar .tray > box > * {
-  margin-left: 0px;
-  margin-right: 0px;
+  margin-left: 6px;
+  margin-right: 6px;
 }
 
-#bar .tray * {
-  -gtk-icon-style: symbolic !important;
-  color: @text !important;
-}
-
-#bar .tray image {
-  font-size: 16px;
-  color: @text;
-  margin: 0 4px;
-  -gtk-icon-style: symbolic !important;
+#bar .tray .item,
+#bar .tray .item *,
+#bar .tray .item image,
+#bar .tray .item picture {
+  -gtk-icon-style: symbolic;
+  color: #ffffff;
 }
 
 #bar .tray button, 
 #bar .tray menubutton, 
 #bar .tray menuitem {
   padding: 0;
-  margin: 0;
+  margin-left: 8px;
+  margin-right: 8px;
 }
