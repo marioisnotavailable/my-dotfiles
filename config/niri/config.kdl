@@ -21,12 +21,10 @@ window-rule {
     open-fullscreen true
 }
 
-environment {
-    PROTON_ENABLE_WAYLAND "1"
-}
 
 // Autostart Services
-spawn-at-startup "swaybg" "-o" "*" "-c" "#000000" "-o" "DP-2" "-i" "/mnt/storage/1346679.jpg" "-m" "fill"
+spawn-at-startup "xwayland-satellite"  // Bridge for older X11 apps that don't support Wayland natively
+spawn-at-startup "swaybg" "-i" "/home/mirko/Pictures/wallpaperflare.com_wallpaper.jpg" "-m" "fill"
 spawn-at-startup "env" "GSK_RENDERER=ngl" "ironbar"
 spawn-at-startup "dunst"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
@@ -43,11 +41,14 @@ input {
         repeat-delay 300
         repeat-rate 50
     }
+    
     touchpad {
-        tap
+        click-method "button-areas"  // Right-click in bottom right, left-click everywhere else
+        tap                          // Tap to left-click
+        dwt                          // Disable while typing
         natural-scroll
-        click-method "clickfinger"
     }
+    
     mouse {
         accel-profile "flat"
     }
@@ -73,17 +74,12 @@ window-rule {
     open-floating true
 }
 
-window-rule {
-    match app-id="wezterm"
-    // Apply transparency if needed
-}
-
-// Keybindings - Adapted exactly from your old Hyprland config
+// Keybindings
 binds {
     // --- Applications ---
-    Mod+Q { spawn "wezterm"; }
+    Mod+Q { spawn "wezterm" "start" "--always-new-process"; }
     Mod+B { spawn "firefox"; }
-    Mod+E { spawn "nautilus" "--new-window"; }
+    Mod+E { spawn "dolphin" "--new-window"; }
     Mod+D { spawn "fuzzel"; }
     Mod+V { spawn "bash" "-c" "cliphist list | fuzzel --dmenu --prompt '󰅍 Clipboard: ' | cliphist decode | wl-copy && wtype -M ctrl -k v -m ctrl"; }
     
@@ -115,7 +111,7 @@ binds {
     Mod+Shift+Up    { set-window-height "-10%"; }
     Mod+Shift+Down  { set-window-height "+10%"; }
 
-    // --- Workspaces ---
+    // --- Workspaces (Focus) ---
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
     Mod+3 { focus-workspace 3; }
@@ -126,6 +122,7 @@ binds {
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
     
+    // --- Workspaces (Move Window) ---
     Mod+Shift+1 { move-column-to-workspace 1; }
     Mod+Shift+2 { move-column-to-workspace 2; }
     Mod+Shift+3 { move-column-to-workspace 3; }
@@ -137,20 +134,9 @@ binds {
     Mod+Shift+9 { move-column-to-workspace 9; }
 
     // --- Screenshots ---
-    // Super + Shift + S: Bereich auswählen & direkt in die Zwischenablage kopieren
     Mod+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp)\" - | wl-copy"; }
-    // Druck-Taste: Niri's eigenes, interaktives Screenshot-Tool (speichert auch ein Bild)
     Print { screenshot; }
 
     // --- Media & Volume (SwayOSD Integration) ---
     XF86AudioPlay { spawn "playerctl" "play-pause"; }
-    XF86AudioNext { spawn "playerctl" "next"; }
-    XF86AudioPrev { spawn "playerctl" "previous"; }
-    
-    XF86AudioRaiseVolume { spawn "swayosd-client" "--output-volume" "raise"; }
-    XF86AudioLowerVolume { spawn "swayosd-client" "--output-volume" "lower"; }
-    XF86AudioMute        { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
-    
-    XF86MonBrightnessUp   { spawn "swayosd-client" "--brightness" "raise"; }
-    XF86MonBrightnessDown { spawn "swayosd-client" "--brightness" "lower"; }
 }

@@ -273,7 +273,13 @@ s/^#\[multilib\]\n#Include/\[multilib\]\nInclude/
 
     systemctl --user daemon-reload || true
     systemctl --user enable --now walker.service swayosd.service elephant.service 2>/dev/null || true
-    sudo systemctl enable --now cups.service
+    sudo systemctl enable --now cups.service NetworkManager.service
+
+    echo "--> Configuring Auto-login for user 'mirko' in greetd..."
+    if [ -f /etc/greetd/cosmic-greeter.toml ]; then
+        sudo sed -i '/\[initial_session\]/d' /etc/greetd/cosmic-greeter.toml
+        sudo sed -i '/\[default_session\]/i [initial_session]\ncommand = "niri"\nuser = "mirko"\n' /etc/greetd/cosmic-greeter.toml
+    fi
     
     echo
     echo "========================================"
