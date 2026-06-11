@@ -18,7 +18,9 @@
           "bar": [
             {
               "type": "label",
-              "label": "󰣇"
+              "label": "󰣇",
+              "halign": "center",
+              "valign": "center"
             }
           ]
         },
@@ -51,13 +53,6 @@
           "class": "music",
           "format": "{title} 󰎆",
           "truncate": "end"
-        },
-        {
-          "type": "script",
-          "class": "network",
-          "cmd": "/home/mirko/.config/ironbar/scripts/net-status.sh",
-          "mode": "poll",
-          "interval": 2000
         }
       ],
       "center": [
@@ -68,6 +63,13 @@
         }
       ],
       "end": [
+        {
+          "type": "script",
+          "class": "network",
+          "cmd": "/home/mirko/.config/ironbar/scripts/net-status.sh",
+          "mode": "poll",
+          "interval": 2000
+        },
         {
           "type": "tray",
           "class": "tray",
@@ -128,7 +130,9 @@
           "bar": [
             {
               "type": "label",
-              "label": ""
+              "label": "",
+              "halign": "center",
+              "valign": "center"
             }
           ]
         }
