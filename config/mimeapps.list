@@ -1,0 +1,80 @@
+[Default Applications]
+# Web & PDF
+text/html=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+application/pdf=firefox.desktop
+
+# Office Documents
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=onlyoffice-desktopeditors.desktop
+application/msword=onlyoffice-desktopeditors.desktop
+application/vnd.oasis.opendocument.text=onlyoffice-desktopeditors.desktop
+application/rtf=onlyoffice-desktopeditors.desktop
+
+# Spreadsheets
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=onlyoffice-desktopeditors.desktop
+application/vnd.ms-excel=onlyoffice-desktopeditors.desktop
+application/vnd.oasis.opendocument.spreadsheet=onlyoffice-desktopeditors.desktop
+
+# Presentations
+application/vnd.openxmlformats-officedocument.presentationml.presentation=onlyoffice-desktopeditors.desktop
+application/vnd.ms-powerpoint=onlyoffice-desktopeditors.desktop
+application/vnd.oasis.opendocument.presentation=onlyoffice-desktopeditors.desktop
+
+# Images
+image/png=org.gnome.Loupe.desktop
+image/jpeg=org.gnome.Loupe.desktop
+image/gif=org.gnome.Loupe.desktop
+image/webp=org.gnome.Loupe.desktop
+image/bmp=org.gnome.Loupe.desktop
+image/tiff=org.gnome.Loupe.desktop
+image/svg+xml=org.gnome.Loupe.desktop
+image/x-icns=org.gnome.Loupe.desktop
+
+# Video
+video/mp4=mpv.desktop
+video/x-matroska=mpv.desktop
+video/webm=mpv.desktop
+video/x-flv=mpv.desktop
+video/quicktime=mpv.desktop
+video/x-msvideo=mpv.desktop
+video/x-ms-wmv=mpv.desktop
+
+# Audio
+audio/mpeg=org.strawberrymusicplayer.strawberry.desktop
+audio/x-flac=org.strawberrymusicplayer.strawberry.desktop
+audio/wav=org.strawberrymusicplayer.strawberry.desktop
+audio/ogg=org.strawberrymusicplayer.strawberry.desktop
+audio/mp4=org.strawberrymusicplayer.strawberry.desktop
+audio/aac=org.strawberrymusicplayer.strawberry.desktop
+
+# Text & Code
+text/plain=code-insiders.desktop
+text/markdown=code-insiders.desktop
+text/x-python=code-insiders.desktop
+text/x-shellscript=code-insiders.desktop
+application/json=code-insiders.desktop
+application/xml=code-insiders.desktop
+application/javascript=code-insiders.desktop
+
+# File Management & Archives
+inode/directory=org.kde.dolphin.desktop
+application/x-7z-compressed=org.kde.dolphin.desktop
+application/x-tar=org.kde.dolphin.desktop
+application/x-bzip2=org.kde.dolphin.desktop
+application/x-gzip=org.kde.dolphin.desktop
+application/zip=org.kde.dolphin.desktop
+application/x-rar=org.kde.dolphin.desktop
+
+[Added Associations]
+text/html=firefox.desktop;
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+application/pdf=firefox.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=onlyoffice-desktopeditors.desktop;
+image/png=org.gnome.Loupe.desktop;
+image/jpeg=org.gnome.Loupe.desktop;
+video/mp4=mpv.desktop;
+audio/mpeg=org.strawberrymusicplayer.strawberry.desktop;
+text/plain=code-insiders.desktop;
+inode/directory=org.kde.dolphin.desktop;
